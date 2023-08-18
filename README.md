@@ -8,5 +8,5 @@
 ## Introduction
 
 <div align="center">
-  <img src="resources/CDS_method_motivation.png" width="800"/>
+  <img src="resources/CDS_method_motivation.png" width="600"/>
 </div>
