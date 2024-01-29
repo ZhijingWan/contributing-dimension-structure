@@ -3,7 +3,6 @@
 > Anonymous AAAI submission (Paper ID: 2649)
 
 [paper]()
-| [project website]()
 
 ## Introduction
 
