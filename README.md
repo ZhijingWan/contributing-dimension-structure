@@ -1,6 +1,5 @@
 # contributing-dimension-structure
 > Contributing Dimension Structure of Deep Feature for Coreset Selection    
-> Anonymous AAAI submission (Paper ID: 2649)
 
 [paper]()
 
@@ -17,3 +16,6 @@
 - (a) We combine the proposed CDS metric and constraint with the current coreset selection pipeline. CDS metric explicitly introduces the information on the Contributing Dimension Structure (CDS). CDS constraint is used to enrich the diversity of CDS in the coreset based on the CDS relationship matrix.
 - (b) CDS metric and constraint enhance the performance of SOTA---GC, which uses the gradient information during the importance measurement. Although replacing the CDS metric with *L*2 distance employed by previous feature-based methods can improve GC, integrating our proposed CDS metric is more effective since it can capture more diverse, informative samples.
 - (c) vs. (d): Previous feature-based methods using *L*2 metric could treat three distinct samples as equivalent, while our CDS metric effectively distinguishes these samples by pruning the feature space and representing the space in different partitions.
+
+## Next Step
+We will release the code.
