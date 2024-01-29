@@ -1,11 +1,9 @@
 # contributing-dimension-structure
-> Contributing Dimension Structure of Deep Feature for Coreset Selection
+> Contributing Dimension Structure of Deep Feature for Coreset Selection [paper]()
 >
 > Zhijing Wan, [Zhixiang Wang](https://scholar.google.com/citations?user=yybzbxMAAAAJ&hl=en), Yuran Wang, [Zheng Wang](https://scholar.google.com/citations?user=-WHTbpUAAAAJ), Hongyuan Zhu, [Shin’ichi Satoh](https://scholar.google.com/citations?hl=zh-CN&user=7aEF5cQAAAAJ)
 >
 > AAAI2024
-
-[paper]()
 
 ## Introduction
 
