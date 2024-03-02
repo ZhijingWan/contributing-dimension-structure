@@ -19,5 +19,31 @@
 - (b) CDS metric and constraint enhance the performance of SOTA---GC, which uses the gradient information during the importance measurement. Although replacing the CDS metric with *L*2 distance employed by previous feature-based methods can improve GC, integrating our proposed CDS metric is more effective since it can capture more diverse, informative samples.
 - (c) vs. (d): Previous feature-based methods using *L*2 metric could treat three distinct samples as equivalent, while our CDS metric effectively distinguishes these samples by pruning the feature space and representing the space in different partitions.
 
-## Next Step
-We will release the code.
+### Datasets
+We have verified the effectiveness of our method on CIFAR10, CIFAR100 and TinyImageNet.
+
+### Example
+
+Select the coreset from CIFAR100 with "Least Confidence" (fraction 0.1, class balanced sampling)
+```sh
+CUDA_VISIBLE_DEVICES=0 python -u main.py --fraction 0.1 --dataset CIFAR100 --data_path /to/your/datasets --num_exp 5 --workers 4 --optimizer SGD -se 10 --selection Uncertainty --model ResNet18 --lr 0.1 -sp /to/your/save/path --batch 128 --uncertainty LeastConfidence
+```
+
+Select the coreset from CIFAR100 with "Least Confidence + Hard CDS" (fraction 0.1, class balanced sampling)
+```sh
+CUDA_VISIBLE_DEVICES=0 python -u main.py --fraction 0.1 --dataset CIFAR100 --data_path /to/your/datasets --num_exp 5 --workers 4 --optimizer SGD -se 10 --selection Uncertainty_Hard --model ResNet18 --lr 0.1 -sp /to/your/save/path --batch 128 --uncertainty LeastConfidence
+```
+
+Select the coreset from CIFAR10 with "Graph Cut" (fraction 0.1, class balanced sampling)
+```sh
+CUDA_VISIBLE_DEVICES=0 python -u main.py --fraction 0.1 --dataset CIFAR10 --data_path /to/your/datasets --num_exp 5 --workers 4 --optimizer SGD -se 10 --selection Submodular --model ResNet18 --lr 0.1 -sp /to/your/save/path --batch 128
+```
+
+Select the coreset from CIFAR10 with "Graph Cut + Soft CDS" (fraction 0.1, class balanced sampling)
+```sh
+CUDA_VISIBLE_DEVICES=0 python -u main.py --fraction 0.1 --dataset CIFAR10 --data_path /to/your/datasets --num_exp 5 --workers 4 --optimizer SGD -se 10 --selection Submodular_Soft --model ResNet18 --lr 0.1 -sp /to/your/save/path --batch 128 --submodular GraphCut_CDS
+```
+
+### References
+
+1. Guo C, Zhao B, Bai Y. Deepcore: A comprehensive library for coreset selection in deep learning[C]//International Conference on Database and Expert Systems Applications. Cham: Springer International Publishing, 2022: 181-195.
