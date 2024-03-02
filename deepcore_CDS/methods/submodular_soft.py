@@ -37,7 +37,7 @@ def dimension_reduction(feat_matrix, device):
     elif type(feat_matrix) == np.ndarray:
         assert feat_matrix.ndim == 2
     feat_matrix = np.mat(feat_matrix)
-    dim_reduce_k = 100 #Hyper-parameter
+    dim_reduce_k = 10 #Hyper-parameter
 
     pca = PCAcomponent_1(feat_matrix, dim_reduce_k)
     pca.fit()
