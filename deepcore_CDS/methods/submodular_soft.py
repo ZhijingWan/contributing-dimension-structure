@@ -20,11 +20,11 @@ def CDS_metric_function(matrix, device):
 
     beta = 1e-4 #Hyper-parameter
     CDS = dist_dim_matrix.gt(beta).cpu().numpy()
-    CDS = CDS.astype(np.int)
+    CDS = CDS.astype(int)
 
     CDS_relationship = cossim_pair_np(CDS)
     CDS_relationship_mask = CDS_relationship.__gt__(0.999999999)
-    CDS_relationship_mask = CDS_relationship_mask.astype(np.int)
+    CDS_relationship_mask = CDS_relationship_mask.astype(int)
 
     constraint_matrix = CDS_relationship_mask + np.ones([len(CDS_relationship_mask[0]), len(CDS_relationship_mask[0])], dtype=np.float32)
 
