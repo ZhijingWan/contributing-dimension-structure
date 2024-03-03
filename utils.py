@@ -3,8 +3,6 @@ import time, torch
 from argparse import ArgumentTypeError
 from prefetch_generator import BackgroundGenerator
 
-from selection.selection_utils import log_training_dynamics
-
 class WeightedSubset(torch.utils.data.Subset):
     def __init__(self, dataset, indices, weights) -> None:
         self.dataset = dataset
@@ -68,85 +66,6 @@ def train(train_loader, network, criterion, optimizer, scheduler, epoch, args, r
                 loss=losses, top1=top1))
 
     record_train_stats(rec, epoch, losses.avg, top1.avg, optimizer.state_dict()['param_groups'][0]['lr'])
-
-def train_dynamic(train_loader, network, criterion, optimizer, scheduler, epoch, args, rec, if_weighted: bool = False, output_dir='./results'):
-    """Train for one epoch on the training set"""
-    batch_time = AverageMeter('Time', ':6.3f')
-    losses = AverageMeter('Loss', ':.4e')
-    top1 = AverageMeter('Acc@1', ':6.2f')
-
-    # switch to train mode
-    network.train()
-
-    train_ids = None  # imgIDs
-    train_golds = None  # ids
-    train_logits = None  # [the probability of gold, prediction]
-    end = time.time()
-    for i, contents in enumerate(train_loader):
-        optimizer.zero_grad()
-        if if_weighted:
-            target = contents[0][1].to(args.device)
-            input = contents[0][0].to(args.device)
-
-            # Compute output
-            output = network(input)
-            weights = contents[1].to(args.device).requires_grad_(False)
-            loss = torch.sum(criterion(output, target) * weights) / torch.sum(weights)
-        else:
-            target = contents[1].to(args.device)
-            input = contents[0].to(args.device)
-
-            # Compute output
-            output = network(input)
-            loss = criterion(output, target).mean()
-
-        # Measure accuracy and record loss
-        prec1 = accuracy(output.data, target, topk=(1,))[0]
-        losses.update(loss.data.item(), input.size(0))
-        top1.update(prec1.item(), input.size(0))
-
-        # Cartography
-        if train_ids is None:  # Keep track of training dynamics.
-            train_ids = np.array(contents[2])
-            train_golds = target.detach().cpu().numpy()
-        else:
-            train_ids = np.append(train_ids, np.array(contents[2]))
-            train_golds = np.append(train_golds, target.detach().cpu().numpy())
-
-        for j, score_item in enumerate(output.detach().cpu().numpy()):
-            probs = torch.nn.functional.softmax(torch.Tensor(score_item), dim=-1)
-            gold_id = target[j].item()
-            if train_logits is None:
-                #print(np.where(score_item == np.max(score_item))[0].item())
-                train_logits = [[float(probs[gold_id]), np.where(score_item == np.max(score_item))[0][0]]]
-            else:
-                train_logits.append([float(probs[gold_id]), np.where(score_item == np.max(score_item))[0][0]])
-
-        # Compute gradient and do SGD step
-        loss.backward()
-        optimizer.step()
-        scheduler.step()
-
-        # Measure elapsed time
-        batch_time.update(time.time() - end)
-        end = time.time()
-
-        if i % args.print_freq == 0:
-            print('Epoch: [{0}][{1}/{2}]\t'
-                  'Time {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
-                  'Loss {loss.val:.4f} ({loss.avg:.4f})\t'
-                  'Prec@1 {top1.val:.3f} ({top1.avg:.3f})'.format(
-                epoch, i, len(train_loader), batch_time=batch_time,
-                loss=losses, top1=top1))
-
-    record_train_stats(rec, epoch, losses.avg, top1.avg, optimizer.state_dict()['param_groups'][0]['lr'])
-
-    log_training_dynamics(output_dir=output_dir,
-                              epoch=epoch,
-                              train_ids=list(train_ids),
-                              train_logits=list(train_logits),
-                              train_golds=list(train_golds))
-
 
 def test(test_loader, network, criterion, epoch, args, rec):
     batch_time = AverageMeter('Time', ':6.3f')
