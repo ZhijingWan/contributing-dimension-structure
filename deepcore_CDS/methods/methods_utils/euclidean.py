@@ -4,14 +4,10 @@ import numpy as np
 
 def euclidean_dist(x, y):
     m, n = x.size(0), y.size(0)
-    print('m={}, n={}'.format(m, n))
     xx = torch.pow(x, 2).sum(1, keepdim=True).expand(m, n)
-    print('xx={}'.format(xx))
     yy = torch.pow(y, 2).sum(1, keepdim=True).expand(n, m).t()
-    print('yy=', yy)
     dist = xx + yy
     dist.addmm_(1, -2, x, y.t())
-    print('dist=', dist)
     dist = dist.clamp(min=1e-12).sqrt()
     return dist
 
