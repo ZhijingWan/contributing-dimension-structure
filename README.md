@@ -1,7 +1,7 @@
 # contributing-dimension-structure
 > Contributing Dimension Structure of Deep Feature for Coreset Selection [[paper](https://arxiv.org/pdf/2401.16193.pdf)]
 >
-> Zhijing Wan, [Zhixiang Wang](https://scholar.google.com/citations?user=yybzbxMAAAAJ&hl=en), Yuran Wang, [Zheng Wang](https://scholar.google.com/citations?user=-WHTbpUAAAAJ), Hongyuan Zhu, [Shin’ichi Satoh](https://scholar.google.com/citations?hl=zh-CN&user=7aEF5cQAAAAJ)
+> [Zhijing Wan](https://zhijingwan.github.io/), [Zhixiang Wang](https://scholar.google.com/citations?user=yybzbxMAAAAJ&hl=en), Yuran Wang, [Zheng Wang](https://scholar.google.com/citations?user=-WHTbpUAAAAJ), [Hongyuan Zhu](https://hongyuanzhu.github.io/), [Shin’ichi Satoh](https://scholar.google.com/citations?hl=zh-CN&user=7aEF5cQAAAAJ)
 >
 > AAAI2024
 
@@ -55,5 +55,5 @@ If you make use of our work, please consider to cite:
 }
 ```
 
-Credits
+## Credits
 The implementation is based on [DeepCore](https://github.com/PatrickZH/DeepCore) code. Thanks for their brilliant work!
