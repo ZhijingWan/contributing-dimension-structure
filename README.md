@@ -47,3 +47,17 @@ CUDA_VISIBLE_DEVICES=0 python -u main.py --fraction 0.1 --dataset CIFAR10 --data
 ### References
 
 1. Guo C, Zhao B, Bai Y. Deepcore: A comprehensive library for coreset selection in deep learning[C]//International Conference on Database and Expert Systems Applications. Cham: Springer International Publishing, 2022: 181-195.
+
+If you make use of our work, please consider to cite:
+
+```bibtex
+@article{wan2024contributing,
+  title={Contributing Dimension Structure of Deep Feature for Coreset Selection},
+  author={Wan, Zhijing and Wang, Zhixiang and Wang, Yuran and Wang, Zheng and Zhu, Hongyuan and Satoh, Shin'ichi},
+  journal={arXiv preprint arXiv:2401.16193},
+  year={2024}
+}
+```
+
+Credits
+The implementation is based on [DeepCore](https://github.com/PatrickZH/DeepCore) code. Thanks for their brilliant work!
