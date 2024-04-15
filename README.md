@@ -44,10 +44,6 @@ Select the coreset from CIFAR10 with "Graph Cut + Soft CDS" (fraction 0.1, class
 CUDA_VISIBLE_DEVICES=0 python -u main.py --fraction 0.1 --dataset CIFAR10 --data_path /to/your/datasets --num_exp 5 --workers 4 --optimizer SGD -se 10 --selection Submodular_Soft --model ResNet18 --lr 0.1 -sp /to/your/save/path --batch 128 --submodular GraphCut_CDS
 ```
 
-### References
-
-1. Guo C, Zhao B, Bai Y. Deepcore: A comprehensive library for coreset selection in deep learning[C]//International Conference on Database and Expert Systems Applications. Cham: Springer International Publishing, 2022: 181-195.
-
 If you make use of our work, please consider to cite:
 
 ```bibtex
