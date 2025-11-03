@@ -48,10 +48,14 @@ If you make use of our work, please consider to cite:
 
 ```bibtex
 @article{wan2024contributing,
-  title={Contributing Dimension Structure of Deep Feature for Coreset Selection},
-  author={Wan, Zhijing and Wang, Zhixiang and Wang, Yuran and Wang, Zheng and Zhu, Hongyuan and Satoh, Shin'ichi},
-  journal={arXiv preprint arXiv:2401.16193},
-  year={2024}
+title={Contributing Dimension Structure of Deep Feature for Coreset Selection},
+volume={38},
+number={8},
+journal={Proceedings of the AAAI Conference on Artificial Intelligence},
+author={Wan, Zhijing and Wang, Zhixiang and Wang, Yuran and Wang, Zheng and Zhu, Hongyuan and Satoh, Shin’ichi},
+year={2024},
+month={Mar.},
+pages={9080-9088}
 }
 ```
 
