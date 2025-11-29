@@ -1,5 +1,5 @@
 # contributing-dimension-structure
-> Contributing Dimension Structure of Deep Feature for Coreset Selection [[paper](https://arxiv.org/pdf/2401.16193.pdf)]
+> Contributing Dimension Structure of Deep Feature for Coreset Selection [[Arxiv](https://arxiv.org/pdf/2401.16193.pdf)] [[AAAI Paper](https://ojs.aaai.org/index.php/AAAI/article/view/28758)]
 >
 > [Zhijing Wan](https://scholar.google.com/citations?user=eClFXFEAAAAJ&hl=zh-CN&oi=sra), [Zhixiang Wang](https://scholar.google.com/citations?user=yybzbxMAAAAJ&hl=en), [Yuran Wang](https://scholar.google.com/citations?user=ZGq8cbIAAAAJ&hl=zh-CN&oi=ao), [Zheng Wang](https://scholar.google.com/citations?user=-WHTbpUAAAAJ), [Hongyuan Zhu](https://hongyuanzhu.github.io/), [Shin’ichi Satoh](https://scholar.google.com/citations?hl=zh-CN&user=7aEF5cQAAAAJ)
 >
